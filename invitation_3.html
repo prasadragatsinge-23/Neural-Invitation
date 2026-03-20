@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Nexus Summit 2k26 - Authority Invitation</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&family=Michroma&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --bg-color: #0A0A0A;
+            --card-bg: rgba(17, 17, 17, 0.85);
+            --accent-yellow: #FFD700;
+            --accent-hover: #FFC107;
+            --text-main: #FFFFFF;
+            --text-muted: #A0A0A0;
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-title: 'Michroma', sans-serif;
+            --font-fancy: 'Cinzel', serif;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            /* Static Techy Grid Background */
+            background-image: 
+                linear-gradient(rgba(255, 215, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 215, 0, 0.04) 1px, transparent 1px),
+                radial-gradient(circle at center, rgba(255, 215, 0, 0.08) 0%, transparent 60%);
+            background-size: 50px 50px, 50px 50px, 100% 100%;
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 5rem 1rem 3rem;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .main-title {
+            font-family: var(--font-title);
+            font-size: clamp(1.8rem, 5vw, 4rem);
+            background: linear-gradient(135deg, #FFFFFF, var(--accent-yellow));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .date-badge {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-size: clamp(0.85rem, 2vw, 1.1rem);
+            color: var(--accent-yellow);
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            padding: 0.6rem 2rem;
+            border-radius: 50px;
+            letter-spacing: 2px;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.15), inset 0 0 10px rgba(255, 215, 0, 0.05);
+            text-transform: uppercase;
+            backdrop-filter: blur(5px);
+        }
+        .venue-badge {
+        
+            font-family: var(--font-heading);
+            font-size: clamp(0.85rem, 2vw, 1.1rem);
+            color: var(--accent-yellow);
+            padding: 0.6rem 2rem;
+            border-radius: 50px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Layout & Tiers */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+        }
+
+        .tier-section {
+            margin-bottom: 4rem;
+        }
+
+        .tier-heading {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-yellow);
+            display: inline-block;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Profile Card */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--accent-yellow);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 215, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--accent-yellow);
+            padding: 3px;
+            background-color: var(--bg-color);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .card-name {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-btn {
+            background-color: var(--accent-yellow);
+            color: var(--bg-color);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .card-btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .card-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background-color: #111;
+            border: 1px solid var(--accent-yellow);
+            border-radius: 12px;
+            padding: 3.5rem 2.5rem;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+            transform: translateY(20px) scale(0.95);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(255, 215, 0, 0.05);
+            background-image: linear-gradient(to bottom, rgba(255,215,0,0.05), transparent);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0) scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.2s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--accent-yellow);
+        }
+
+        .modal-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-yellow);
+            margin: 0 auto 1.5rem;
+            display: block;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .modal-body {
+            font-family: var(--font-fancy);
+            font-size: 1.3rem;
+            line-height: 1.7;
+            color: var(--text-main);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .modal-highlight {
+            color: var(--accent-yellow);
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+        
+        .modal-date {
+            display: block;
+            margin-top: 1.5rem;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            color: var(--accent-yellow);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .modal-content {
+                padding: 2.5rem 1.5rem;
+            }
+            .modal-body {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="main-title">Neural Nexus Summit 2k26</h1>
+        <div class="date-badge">🗓️ 23rd & 24th March | Invitation</div>
+        <div class="venue-badge">📍TGPCET campus, 3rd Building, 4th Floor AIML Department </div>
+    </header>
+
+    <main class="container">
+        <section class="tier-section">
+            <h2 class="tier-heading">Leadership & Governance</h2>
+            <div class="grid-layout">
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="Chairman" class="card-img" /> 
+                    <h3 class="card-title">Chairman</h3>
+                    <p class="card-name">Hon'ble. Dr. Mohan Gaikwad Patil</p>
+                    <button class="card-btn" data-title="Chairman">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="Vice Chairman" class="card-img" />
+                    <h3 class="card-title">Vice Chairman</h3>
+                    <p class="card-name">Hon'ble. Mr. Aakash Gaikwad Patil</p>
+                    <button class="card-btn" data-title="Vice Chairman">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="Treasurer" class="card-img" />
+                    <h3 class="card-title">Treasurer</h3>
+                    <p class="card-name">Hon'ble. Dr. Sandip Gaikwad </p>
+                    <button class="card-btn" data-title="Treasurer">Open Invitation</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="tier-section">
+            <h2 class="tier-heading">Academic & Quality Administration</h2>
+            <div class="grid-layout">
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="Principal" class="card-img" />
+                    <h3 class="card-title">Principal</h3>
+                    <p class="card-name">Hon'ble. Dr. P.L. Naktode</p>
+                    <button class="card-btn" data-title="Principal">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="Vice Principal" class="card-img" />
+                    <h3 class="card-title">Vice Principal</h3>
+                    <p class="card-name">Hon'ble. Dr. Ganesh Vakte</p>
+                    <button class="card-btn" data-title="Vice Principal">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="Dean IQAC" class="card-img" />
+                    <h3 class="card-title">Dean IQAC</h3>
+                    <p class="card-name">Hon'ble. Dr. Mahendran G.</p>
+                    <button class="card-btn" data-title="Dean IQAC">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="Associate Dean IQAC" class="card-img" />
+                    <h3 class="card-title">Associate Dean IQAC</h3>
+                    <p class="card-name">Hon'ble. Prof. Rohini Pochhi</p>
+                    <button class="card-btn" data-title="Associate Dean IQAC">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="Dean SDC" class="card-img" />
+                    <h3 class="card-title">Dean SDC</h3>
+                    <p class="card-name">Hon'ble. Dr. Sameer Potdar</p>
+                    <button class="card-btn" data-title="Dean SDC">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="Dean TNP" class="card-img" />
+                    <h3 class="card-title">Dean TNP</h3>
+                    <p class="card-name">Hon'ble. Dr. Nitin Chore</p>
+                    <button class="card-btn" data-title="Dean TNP">Open Invitation</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="tier-section">
+            <h2 class="tier-heading">Directorial Board</h2>
+            <div class="grid-layout">
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="Director IT" class="card-img" />
+                    <h3 class="card-title">Director IT</h3>
+                    <p class="card-name">Hon'ble. Dr. Mukul Pande</p>
+                    <button class="card-btn" data-title="Director IT">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="Director Administration" class="card-img" />
+                    <h3 class="card-title">Director Administration</h3>
+                    <p class="card-name">Hon'ble. Dr. Pragati Patil</p>
+                    <button class="card-btn" data-title="Director Administration">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="Director Finance" class="card-img" />
+                    <h3 class="card-title">Director Finance</h3>
+                    <p class="card-name">Hon'ble. Mrs. Surekha Raut</p>
+                    <button class="card-btn" data-title="Director Finance">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="Director Academics" class="card-img" />
+                    <h3 class="card-title">Director Academics</h3>
+                    <p class="card-name">Hon'ble. Prof. Ritesh Banpurkar</p>
+                    <button class="card-btn" data-title="Director Academics">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="Director Examination" class="card-img" />
+                    <h3 class="card-title">Director Examination</h3>
+                    <p class="card-name">Hon'ble. Dr. Pratik Ghutke</p>
+                    <button class="card-btn" data-title="Director Examination">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="Director Welfare" class="card-img" />
+                    <h3 class="card-title">Director Welfare</h3>
+                    <p class="card-name">Hon'ble. Dr. Amey Khedikar</p>
+                    <button class="card-btn" data-title="Director Welfare">Open Invitation</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="tier-section">
+            <h2 class="tier-heading">Heads of Departments</h2>
+            <div class="grid-layout">
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="HOD Artificial Intelligence and Mchine Learning" class="card-img" />
+                    <h3 class="card-title">HOD - Artificial Intelligence and Mchine Learning</h3>
+                    <p class="card-name">Prof. Suraj Mahajan</p>
+                    <button class="card-btn" data-title="Head of Artificial Intelligence and Mchine Learning Department">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="HOD Information Technology" class="card-img" />
+                    <h3 class="card-title">HOD - Information Technology</h3>
+                    <p class="card-name">Prof. Abhay Rewatkar</p>
+                    <button class="card-btn" data-title="Head of Information Technology Department">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="HOD Computer science Engineering" class="card-img" />
+                    <h3 class="card-title">HOD - Computer science Engineering</h3>
+                    <p class="card-name">Dr. Swapnili Karmore</p>
+                    <button class="card-btn" data-title="Head of Computer science Engineering Department">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="HOD Data Science" class="card-img" />
+                    <h3 class="card-title">HOD - Data Science</h3>
+                    <p class="card-name">Prof. Nilesh Nagrale</p>
+                    <button class="card-btn" data-title="Head of Data Science Department">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="HOD Aeronautical" class="card-img" />
+                    <h3 class="card-title">HOD - Aeronautical</h3>
+                    <p class="card-name">Prof. Vishwajit Ambare</p>
+                    <button class="card-btn" data-title="Head of Aeronautical Department">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="HOD Mechanical" class="card-img" />
+                    <h3 class="card-title">HOD - Mechanical</h3>
+                    <p class="card-name">Dr. Aanand Kumbhare</p>
+                    <button class="card-btn" data-title="Head of Mechanical Department">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="HOD Electronics and Communication" class="card-img" />
+                    <h3 class="card-title">HOD - Electronics and Communication</h3>
+                    <p class="card-name">Prof. Chetan Jambhulkar</p>
+                    <button class="card-btn" data-title="Head of Electronics and Communication Department">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="HOD Electrical Engineering" class="card-img" />
+                    <h3 class="card-title">HOD - Electrical Engineering</h3>
+                    <p class="card-name">Prof. Praful Gadge</p>
+                    <button class="card-btn" data-title="Head of Electrical Engineering Department">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="HOD Civil" class="card-img" />
+                    <h3 class="card-title">HOD - Civil</h3>
+                    <p class="card-name">Dr. Aasif Baig</p>
+                    <button class="card-btn" data-title="Head of Civil Department">Open Invitation</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/150/1a1a1a/FFD700?text=Photo" alt="HOD Bio Technology" class="card-img" />
+                    <h3 class="card-title">HOD - Bio Technology</h3>
+                    <p class="card-name">Dr. Rohit Kalnake</p>
+                    <button class="card-btn" data-title="Head of Bio Technology Department">Open Invitation</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal-overlay" id="invitationModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal">&times;</button>
+            <img src="" alt="Authority Portrait" id="modalImage" class="modal-img">
+            <p class="modal-body" id="modalText"></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('invitationModal');
+            const closeBtn = document.getElementById('closeModal');
+            const modalText = document.getElementById('modalText');
+            const modalImage = document.getElementById('modalImage');
+            const openButtons = document.querySelectorAll('.card-btn');
+
+            // Open modal, set image, and inject brief, classy text
+            openButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const authorityTitle = this.getAttribute('data-title');
+                    const card = this.closest('.card');
+                    const imageSrc = card.querySelector('.card-img').src;
+                    
+                    // Set Modal Image
+                    modalImage.src = imageSrc;
+
+                    // Construct the brief and classy message
+                    const message = 
+                        `Respected <span class="modal-highlight">${authorityTitle}</span>, the Department of Artificial Intelligence and Machine Learning at TGPCET cordially invites you to grace the Neural Nexus Summit 2k26 with your esteemed presence. Your leadership and vision continue to inspire our tech community. We eagerly await your arrival on March 23rd.<span class="modal-date">March 23rd, 2026</span>`;
+                    
+                    modalText.innerHTML = message;
+                    modal.classList.add('active');
+                });
+            });
+
+            // Close modal via X button
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+
+
+            // Close modal by clicking outside the content box
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+
+            // Close modal via Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
